@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!--CABECALHO-->
+<head>
+    <title>Formulario Convem</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="modulo.js"></script>
+    <script src="controle.js"></script>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<!--CORPO-->
+<body>
+    <!--TITULO-->
+    <h1>Formulário Convem</h1> <br>
+    <!--FORMULARIO-->
+    <form ng-app="formulario" ng-controller="controlador_formulario">
+        <p id="pergunta">Você quer se juntar ao time da Convém?</p><br><br>
+        <input placeholder=" Digite seu nome..." type="text"       ng-model="nome">           <br><br><br>
+        <input placeholder=" Digite seu sobrenome..." type="text"  ng-model="sobrenome">      <br><br><br>
+        <input placeholder=" Digite sua resposta..." type="text"   ng-model="resposta">       <br><br><br>
+        <button ng-click="postar_dados()">
+            <p id="texto_botao">ENVIAR DADOS</p>
+        </button>
+    </form>
+</body>
+</html>
