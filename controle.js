@@ -50,7 +50,7 @@ formulario.controller('controlador_formulario', function($scope, $http){
                 {
                     alert('Erro');
                 }
-            }
+            }                   // fim da condicional baseada no status do metodo
         });                     // fim do then
-    }
+    }                           // fim da funcao postar_dados
 });                             // fim do controller
