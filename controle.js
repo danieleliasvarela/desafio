@@ -14,9 +14,9 @@ formulario.controller('controlador_formulario', function($scope, $http){
     // FUNCAO postar_dados
     $scope.postar_dados = function(nome, sobrenome, resposta){  // FUNCAO PARA POSTAR DADOS QUE VEM LA DO HTML
         
-
         
-        // CRIEI VARIAVEL DADOS PARA ARMAZENAR TUDO QUE FOI PASSADO PELO HTML 
+
+        // CRIEI VARIAVEL "dados" PARA ARMAZENAR TUDO QUE FOI PASSADO PELO HTML 
         var dados = {   
             nome: $scope.nome,
             sobrenome: $scope.sobrenome,
@@ -25,24 +25,32 @@ formulario.controller('controlador_formulario', function($scope, $http){
 
 
 
-        // METODO POST TRANSFORMANDO dados EM JSON PARA PODER PASSAR
+        // METODO POST TRANSFORMANDO "dados" EM JSON PARA PODER PASSAR
         $http.post('https://63429207ba4478d4783dd7a1.mockapi.io/desafio/dados', JSON.stringify(dados))
-        .then(function(response){
-            $scope.status_do_metodo = response.statusText; // TEXTO INDICANDO STATUS DO METODO EH PASSADO PARA A VARIAVEL $scope.statustext
-
-            // CONDICIONAL CASO A O STATUS DO METODO SEJA POSITIVO (RESPOSTA POSITIVA PRO "POST")
-            if ($scope.status_do_metodo == "Created")
+        .then(function(response)
+        {
+            /* TEXTO INDICANDO STATUS DO METODO EH PASSADO PARA A VARIAVEL "status_do_metodo"
+            "response.statusText" devolve "Created" se o metodo POST for efetuado com sucesso */
+            var status_do_metodo = response.statusText; 
+            var resposta = $scope.resposta;
+            
+            
+            /* CONDICIONAL CASO O "POST" FUNCIONE */
+            if (status_do_metodo == "Created")
             {
-                alert('Você está mais próximo de se juntar ao time!');
+                console.log(status_do_metodo);
+                
+                /* CONDICIONAL CASO A O STATUS DO METODO SEJA POSITIVO (RESPOSTA POSITIVA PRO "POST")
+                E O USUARIO PREENCHER UMA RESPOSTA POSITIVA */
+                if (resposta == "SIM" || resposta == "sim" || resposta == "Sim")
+                {
+                    alert('Você está mais próximo de se juntar ao time!');
+                }
+                else
+                {
+                    alert('Erro');
+                }
             }
-            else
-            {
-                alert('Erro');
-            }
-
         });                     // fim do then
     }
-
 });                             // fim do controller
-
-
