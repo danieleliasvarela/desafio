@@ -1,4 +1,4 @@
-# desafio
+# Desafio
 
 Para rodar, basta rodar o HTML no server local
 
